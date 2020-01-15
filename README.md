@@ -13,9 +13,11 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 - Express
 - Mongoose
 - Axios
+- CORS
 
 ### Frontend
 - ReactJS
+- Axios
 
 ### Mobile
 - React Native
@@ -47,3 +49,5 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 
 ### Development
 - Em `backend/` executar `yarn` para instalar as dependências e executar `yarn start`. Servidor deverá rodar em `http://localhost:3333`
+
+- Em `frontend/` executar `yarn` para instalar as dependências e executar `yarn start`. Servidor deverá rodar em `http://localhost:3000`
