@@ -21,26 +21,26 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 - React Native
 
 ## REST endpoints
-### /devs
+#### /devs
   - **Método:** GET
   - **Função:** Listar todos os desenvolvedores registrados
 
-### /devs
+#### /devs
   - **Método:** POST
   - **Requisição:** Body
   - **Função:** Registrar desenvolvedor utilizando dados do GitHub
 
-### /devs/:id
+#### /devs/:id
   - **Método:** PUT
   - **Requisição:** Body, Param
   - **Função:** Atualizar registro do desenvolvedor
 
-### /devs/:id
+#### /devs/:id
   - **Método:** DELETE
   - **Requisição:** Param
   - **Função:** Deletar registro do desenvolvedor
 
-### /search
+#### /search
   - **Método:** GET
   - **Requisição:** Query
   - **Função:** Buscar todos os desenvolvedores registrados filtrando por tecnologias e localização (distância em um raio de 50 km)
