@@ -20,6 +20,7 @@ const routes = Router()
 routes.get('/devs', DevController.index)
 routes.post('/devs', DevController.store)
 // Exercícos por fora
+routes.get('/devs/:id', DevController.show)
 routes.put('/devs/:id', DevController.update)
 routes.delete('/devs/:id', DevController.destroy)
 

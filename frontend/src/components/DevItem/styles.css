@@ -50,3 +50,34 @@ li.dev-item a {
 li.dev-item a:hover {
   color: #5A2EA6;
 }
+
+li.dev-item:hover .action-btns {
+  display: block;  
+}
+
+.action-btns {
+  float: right;
+  margin: -15px;  
+  display: none;
+}
+
+.action-btns button {
+  margin-left: 3px;
+  height: 25px;
+  width: 30px;
+  border-radius: 2px;
+  border: 0;
+  cursor: pointer;  
+  transition: ease-out 0.2s;  
+}
+
+.action-btns .btn-edit:hover {
+  background-color: #9f6bf8;
+  color: #FFF;
+}
+
+.action-btns .btn-delete:hover {
+  background-color: #d65959;
+  color: #FFF;
+}
+

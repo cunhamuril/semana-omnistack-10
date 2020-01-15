@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+import api from '../../services/api'
+
 import './styles.css'
 
-function DevForm({ onSubmit }) {
+function DevForm({ onSubmit, id }) {
   const [githubUsername, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [latitude, setLatitude] = useState('');
@@ -22,20 +24,45 @@ function DevForm({ onSubmit }) {
       },
       {
         timeout: 30000,
-      }
-    )
+      })
   }, []);
+
+  useEffect(() => {
+    loadDevOnForm()
+    //eslint-disable-next-line
+  }, [id]);
+
+  // Função responsável por listar dados do dev e preencher o form
+  async function loadDevOnForm() {
+    if (id) {
+      const response = await api.get(`/devs/${id}`)
+
+      const { github_username, techs } = response.data
+
+      setGithubUsername(github_username)
+      setTechs(techs.join(', '))
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
 
     // Enviando info por props
-    await onSubmit({
-      github_username: githubUsername,
-      techs,
-      latitude,
-      longitude
-    })
+    if (!id) {
+      await onSubmit({
+        github_username: githubUsername,
+        techs,
+        latitude,
+        longitude
+      })
+    } else {
+      await onSubmit({
+        github_username: githubUsername,
+        techs,
+        latitude,
+        longitude
+      }, id)
+    }
 
     setGithubUsername('')
     setTechs('')
@@ -46,7 +73,7 @@ function DevForm({ onSubmit }) {
       <div className="input-block">
         <label htmlFor="github_username">Usuário do Github</label>
         <input
-          type="text" n
+          type="text"
           ame="github_username"
           id="github_username"
           value={githubUsername}
@@ -60,7 +87,7 @@ function DevForm({ onSubmit }) {
         <input
           type="text"
           name="techs"
-          id="techs"// import { Container } from './styles';
+          id="techs"
           value={techs}
           onChange={e => setTechs(e.target.value)}
           required
@@ -93,7 +120,7 @@ function DevForm({ onSubmit }) {
         </div>
       </div>
 
-      <button type="submit">Salvar</button>
+      <button type="submit">{id ? "Salvar Alterações" : "Cadastrar"}</button>
     </form>
   )
 }

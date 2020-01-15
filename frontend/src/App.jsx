@@ -12,34 +12,50 @@ import DevForm from './components/DevForm'
 
 function App() {
   const [devs, setDevs] = useState([]);
+  const [id, setId] = useState(null);
 
   // Listar devs
   useEffect(() => {
-    async function loadDevs() {
-      const response = await api.get('/devs')
-
-      setDevs(response.data)
-    }
-
     loadDevs()
   }, [])
 
-  async function handleAddDev(data) {
-    const response = await api.post('/devs', data)
+  async function loadDevs() {
+    const response = await api.get('/devs')
 
-    setDevs([...devs, response.data])
+    setDevs(response.data)
+  }
+
+  async function handleAddDev(data, id) {
+    if (!id) {
+      await api.post('/devs', data)
+    } else {
+      await api.put(`/devs/${id}`, data)
+      setId(null)
+    }
+    loadDevs()
+  }
+
+  function setDevId(id) {
+    setId(id)
   }
 
   return (
     <div className="App">
       <aside>
-        <strong>Cadastrar</strong>
-        <DevForm onSubmit={handleAddDev} />
+        <strong>{id ? "Alterar Cadastro" : "Cadastrar"}</strong>
+        <DevForm onSubmit={handleAddDev} id={id} />
       </aside>
 
       <main>
         <ul>
-          {devs.map(dev => <DevItem key={dev._id} dev={dev} />)}
+          {devs.map(dev => (
+            <DevItem
+              key={dev._id}
+              dev={dev}
+              loadDevs={loadDevs}
+              setDevId={setDevId}
+            />
+          ))}
         </ul>
       </main>
     </div>

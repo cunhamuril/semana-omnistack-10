@@ -20,6 +20,12 @@ module.exports = {
     return res.json(devs)
   },
 
+  async show(req, res) {
+    const dev = await Dev.findOne({ _id: req.params.id })
+
+    return res.json(dev)
+  },
+
   async store(req, res) {
     const {
       github_username,
