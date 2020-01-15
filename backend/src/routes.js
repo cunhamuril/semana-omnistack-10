@@ -19,6 +19,9 @@ const routes = Router()
 // Rotas de devs
 routes.get('/devs', DevController.index)
 routes.post('/devs', DevController.store)
+// Exercícos por fora
+routes.put('/devs/:id', DevController.update)
+routes.delete('/devs/:id', DevController.destroy)
 
 // Rota de busca
 routes.get('/search', SearchController.index)

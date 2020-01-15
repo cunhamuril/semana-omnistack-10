@@ -65,5 +65,68 @@ module.exports = {
     }
 
     return res.json(dev)
+  },
+
+
+  /**
+   * EXERCÍCIOS
+   * (não fará parte da aplicação da semana omnistack originalmente)
+   */
+  async update(req, res) {
+    const {
+      github_username,
+      techs,
+      latitude,
+      longitude
+    } = req.body
+
+    const {
+      id
+    } = req.params
+
+    // Chamada a API do GitHub
+    const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`)
+
+    const {
+      name = login, avatar_url, bio
+    } = apiResponse.data
+
+    // Transformar a string em array
+    const techsArray = parseStringAsArray(techs)
+
+    // Localidade com dados de latitude e longitude
+    const location = {
+      type: 'Point',
+      coordinates: [longitude, latitude],
+    }
+
+    dev = await Dev.findByIdAndUpdate(id, {
+      github_username,
+      name,
+      avatar_url,
+      bio,
+      techs: techsArray,
+      location,
+    })
+
+    if (!dev) return res.status(400).json({
+      error: "Dev não encontrado!"
+    })
+
+    return res.json(dev)
+  },
+
+  async destroy(req, res) {
+    const {
+      id
+    } = req.params
+
+    dev = await Dev.findByIdAndDelete(id)
+
+    if (!dev) return res.status(400).json({
+      error: "Dev não encontrado!"
+    })
+
+    return res.json(dev)
   }
 }

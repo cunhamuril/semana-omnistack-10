@@ -27,7 +27,6 @@ module.exports = {
       }
     })
 
-
     return res.json({
       devs
     })
