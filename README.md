@@ -33,6 +33,10 @@ Aplicação que registra devs e busca por devs por perto do usuário.
   - **Função:** Registrar desenvolvedor utilizando dados do GitHub
 
 #### /devs/:id
+  - **Método:** GET  
+  - **Função:** Listar desenvolvedor por ID
+
+#### /devs/:id
   - **Método:** PUT
   - **Requisição:** Body, Param
   - **Função:** Atualizar registro do desenvolvedor
