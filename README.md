@@ -2,9 +2,11 @@
 Aplicação que registra devs e busca por devs por perto do usuário.
 
 ## Funcionalidades
-- Registrar devs com dados do GitHub
 - Listar devs
-- Buscar por devs de uma distância em um raio de 50km filtrando por tecnologias
+- Registrar ou alterar devs com dados do GitHub
+- Deletar devs
+- Buscar por devs no mapa em uma distância dentro de um raio de 50km, filtrando por tecnologias
+- Visualizar informações na página do GitHub em um webview no dispositivo mobile
 
 ## Ferramentas utilizadas
 ### Backend
@@ -20,7 +22,10 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 - Axios
 
 ### Mobile
+- Expo
 - React Native
+- React Native Maps
+- Axios
 
 ## REST endpoints
 #### /devs
@@ -55,3 +60,5 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 - Em `backend/` executar `yarn` para instalar as dependências e executar `yarn start`. Servidor deverá rodar em `http://localhost:3333`
 
 - Em `frontend/` executar `yarn` para instalar as dependências e executar `yarn start`. Servidor deverá rodar em `http://localhost:3000`
+
+- Em `mobile/` (Necessário ter Expo instalado) exercutar `yarn` para instalar as dependências e executar `expo start` para executar o servidor de desenvolvimento do Expo.

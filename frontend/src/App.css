@@ -25,5 +25,9 @@
   .App aside {
     width: 100%;
   }
+
+  .App .action-btns {
+    display: block;
+  }
 }
 
