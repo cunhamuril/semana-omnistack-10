@@ -2,8 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const routes = require('./routes')
 const cors = require('cors')
+const http = require('http')
+const { setupWebsocket } = require('./websocket')
 
 const app = express()
+
+// Extrair servidor HTTP dentro do express
+const server = http.Server(app)
+
+// Chamada da função WebSocket enviando o server como parâmetro
+setupWebsocket(server)
 
 /**
  * Conexão com o banco de dados
@@ -29,6 +37,6 @@ app.use(routes)
 
 // Porta em que sera executada o servidor
 const PORT = 3333
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`)
 })

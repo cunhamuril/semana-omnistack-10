@@ -1,7 +1,12 @@
 import React from 'react';
-import { StatusBar } from "react-native";
+import { StatusBar, YellowBox } from "react-native";
 
 import Routes from './src/routes'
+
+// Ignorar tela de warning warning do websocket que aparece no app
+YellowBox.ignoreWarnings([
+  'Unrecognized WebSocket'
+])
 
 export default function App() {
   return (

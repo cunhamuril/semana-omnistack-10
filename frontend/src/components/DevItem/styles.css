@@ -51,14 +51,14 @@ li.dev-item a:hover {
   color: #5A2EA6;
 }
 
-li.dev-item:hover .action-btns {
-  display: block;  
-}
-
 .action-btns {
   float: right;
   margin: -15px;  
   display: none;
+}
+
+li.dev-item:hover .action-btns {
+  display: block;  
 }
 
 .action-btns button {

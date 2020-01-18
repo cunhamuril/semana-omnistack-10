@@ -16,6 +16,7 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 - Mongoose
 - Axios
 - CORS
+- Socket.io
 
 ### Frontend
 - ReactJS
@@ -26,6 +27,7 @@ Aplicação que registra devs e busca por devs por perto do usuário.
 - React Native
 - React Native Maps
 - Axios
+- Socket.io Client
 
 ## REST endpoints
 #### /devs
